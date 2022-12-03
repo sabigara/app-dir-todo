@@ -1,26 +1,13 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer utilities {
+  .button {
+    @apply inline-block bg-purple-600 text-white rounded-md px-3 h-8 leading-8 font-semibold;
   }
-  body {
-    color: white;
-    background: black;
+
+  .button-danger {
+    @apply inline-block bg-red-600 text-white rounded-md px-3 h-8 leading-8 font-semibold;
   }
 }

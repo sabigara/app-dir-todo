@@ -1,0 +1,21 @@
+.body {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  grid-template-rows: 3rem 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar content";
+  min-height: 100vh;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.content {
+  grid-area: content;
+}
