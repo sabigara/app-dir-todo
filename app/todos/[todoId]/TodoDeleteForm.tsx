@@ -1,6 +1,7 @@
 "use client";
 
 import { Todo } from "@prisma/client";
+import clsx from "clsx";
 import { notFound, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
@@ -27,8 +28,11 @@ export default function TodoDeleteForm({ todo }: Props) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <button className="button-danger" disabled={isSubmitting}>
-        {isSubmitting ? "Loading" : "Delete"}
+      <button
+        className={clsx("btn btn-sm btn-secondary", isSubmitting && "loading")}
+        disabled={isSubmitting}
+      >
+        Delete
       </button>
     </form>
   );

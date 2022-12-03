@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -40,8 +41,12 @@ export default function Form() {
           })}
         />
       </label>
-      <button type="submit" disabled={isSubmitting} className="button">
-        {isSubmitting ? "loading..." : "Add"}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className={clsx("btn btn-sm btn-primary", isSubmitting && "loading")}
+      >
+        Add
       </button>
     </form>
   );

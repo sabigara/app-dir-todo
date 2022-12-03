@@ -10,4 +10,12 @@
   .button-danger {
     @apply inline-block bg-red-600 text-white rounded-md px-3 h-8 leading-8 font-semibold;
   }
+
+  .loader {
+    @apply bg-gray-200 rounded-md;
+  }
+
+  .loader-rounded {
+    @apply bg-gray-200 rounded-full;
+  }
 }

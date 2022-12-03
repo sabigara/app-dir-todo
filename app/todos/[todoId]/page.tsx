@@ -4,7 +4,7 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { prisma } from "../../../lib/db";
 import { sleep } from "../../../lib/sleep";
-import TodoDeleteForm from "./Form";
+import TodoDeleteForm from "./TodoDeleteForm";
 
 async function getData(id: number) {
   await sleep(1000);
@@ -38,7 +38,7 @@ export default async function TodoItemPage({ params }: Props) {
         </dd>
       </dl>
       <div className="flex gap-4 mt-8">
-        <Link href={`/todos/${todoId}/edit`} className="button">
+        <Link href={`/todos/${todoId}/edit`} className="btn btn-sm btn-primary">
           Edit
         </Link>
         <TodoDeleteForm todo={todo} />

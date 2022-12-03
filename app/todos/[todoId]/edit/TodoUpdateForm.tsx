@@ -1,12 +1,13 @@
 "use client";
 
 import { Todo } from "@prisma/client";
+import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Schema = {
   title: string;
-  done: "true" | "false";
+  done: "true" | false;
 };
 
 type Props = {
@@ -20,7 +21,7 @@ export default function TodoUpdateForm({ todo }: Props) {
     formState: { isSubmitting },
   } = useForm<Schema>({
     defaultValues: {
-      done: todo.done ? "true" : "false",
+      done: todo.done ? "true" : false,
       title: todo.title,
     },
   });
@@ -46,32 +47,33 @@ export default function TodoUpdateForm({ todo }: Props) {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-4 items-start"
     >
-      <label className="block">
+      <label className="flex flex-col gap-2">
         <span className="block">What to do?</span>
         <textarea
-          className="border rounded-md mt-2 p-3"
+          className="textarea textarea-bordered"
           {...register("title", {
             required: true,
           })}
         />
       </label>
-      <fieldset>
-        <legend className="mb-2">Status</legend>
-        <label className="flex gap-2">
-          <input type="radio" {...register("done")} value="true" />
-          <span>Done</span>
-        </label>
-        <label className="flex gap-2">
-          <input type="radio" {...register("done")} value="false" />
-          <span>Not done</span>
-        </label>
-      </fieldset>
+      <label className="flex gap-2">
+        <input
+          type="checkbox"
+          {...register("done")}
+          value="true"
+          className="toggle toggle-primary"
+        />
+        <span className="select-none">Done</span>
+      </label>
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-block bg-purple-600 text-white rounded-md px-3 h-8 font-semibold"
+        className={clsx(
+          "btn btn-sm btn-primary mt-4",
+          isSubmitting && "loading"
+        )}
       >
-        {isSubmitting ? "loading..." : "Update"}
+        Update
       </button>
     </form>
   );
